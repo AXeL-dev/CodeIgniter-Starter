@@ -15,6 +15,9 @@ class Auth extends MX_Controller {
 		$this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
 
 		$this->lang->load('auth');
+
+		// load templates module
+		$this->load->module('templates');
 	}
 
 	// redirect if needed, otherwise display the user list
@@ -34,7 +37,7 @@ class Auth extends MX_Controller {
 		else
 		{
 			// set the flash data error message if there is one
-			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
+			$this->data['message'] = (validation_errors()) ? validation_errors('<li>', '</li>') : $this->session->flashdata('message');
 
 			//list the users
 			$this->data['users'] = $this->ion_auth->users()->result();
@@ -65,9 +68,16 @@ class Auth extends MX_Controller {
 			if ($this->ion_auth->login($this->input->post('identity'), $this->input->post('password'), $remember))
 			{
 				//if the login is successful
-				//redirect them back to the home page
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
-				redirect('/', 'refresh');
+
+				if ($this->ion_auth->is_admin()) {
+					//redirect to the admin panel
+					redirect('admin', 'refresh');
+				}
+				else {
+					//redirect them back to the home page
+					redirect('/', 'refresh');
+				}
 			}
 			else
 			{
@@ -81,7 +91,7 @@ class Auth extends MX_Controller {
 		{
 			// the user is not logging in so display the login page
 			// set the flash data error message if there is one
-			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
+			$this->data['message'] = (validation_errors()) ? validation_errors('<li>', '</li>') : $this->session->flashdata('message');
 
 			$this->data['identity'] = array('name' => 'identity',
 				'id'    => 'identity',
@@ -128,7 +138,7 @@ class Auth extends MX_Controller {
 		{
 			// display the form
 			// set the flash data error message if there is one
-			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
+			$this->data['message'] = (validation_errors()) ? validation_errors('<li>', '</li>') : $this->session->flashdata('message');
 
 			$this->data['min_password_length'] = $this->config->item('min_password_length', 'ion_auth');
 			$this->data['old_password'] = array(
@@ -209,7 +219,7 @@ class Auth extends MX_Controller {
 			}
 
 			// set any errors and display the form
-			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
+			$this->data['message'] = (validation_errors()) ? validation_errors('<li>', '</li>') : $this->session->flashdata('message');
 			$this->_render_page('auth/forgot_password', $this->data);
 		}
 		else
@@ -271,7 +281,7 @@ class Auth extends MX_Controller {
 				// display the form
 
 				// set the flash data error message if there is one
-				$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
+				$this->data['message'] = (validation_errors()) ? validation_errors('<li>', '</li>') : $this->session->flashdata('message');
 
 				$this->data['min_password_length'] = $this->config->item('min_password_length', 'ion_auth');
 				$this->data['new_password'] = array(
@@ -412,12 +422,19 @@ class Auth extends MX_Controller {
 		}
 	}
 
+	// sign up
+	public function signup()
+    {
+    	$this->create_user(true);
+    }
+
 	// create a new user
-	public function create_user()
+	public function create_user($allow_sign_up=false)
     {
         $this->data['title'] = $this->lang->line('create_user_heading');
 
-        if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin())
+        // allow sign up without being logged in or being an admin
+        if (!$allow_sign_up && (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin()))
         {
             redirect('auth', 'refresh');
         }
@@ -467,7 +484,7 @@ class Auth extends MX_Controller {
         {
             // display the create user form
             // set the flash data error message if there is one
-            $this->data['message'] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
+            $this->data['message'] = (validation_errors() ? validation_errors('<li>', '</li>') : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
 
             $this->data['first_name'] = array(
                 'name'  => 'first_name',
@@ -518,7 +535,9 @@ class Auth extends MX_Controller {
                 'value' => $this->form_validation->set_value('password_confirm'),
             );
 
-            $this->_render_page('auth/create_user', $this->data);
+            $view = $allow_sign_up ? 'auth/signup' : 'auth/create_user';
+
+            $this->_render_page($view, $this->data);
         }
     }
 
@@ -628,7 +647,7 @@ class Auth extends MX_Controller {
 		$this->data['csrf'] = $this->_get_csrf_nonce();
 
 		// set the flash data error message if there is one
-		$this->data['message'] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
+		$this->data['message'] = (validation_errors() ? validation_errors('<li>', '</li>') : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
 
 		// pass the user to the view
 		$this->data['user'] = $user;
@@ -701,7 +720,7 @@ class Auth extends MX_Controller {
 		{
 			// display the create group form
 			// set the flash data error message if there is one
-			$this->data['message'] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
+			$this->data['message'] = (validation_errors() ? validation_errors('<li>', '</li>') : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
 
 			$this->data['group_name'] = array(
 				'name'  => 'group_name',
@@ -760,7 +779,7 @@ class Auth extends MX_Controller {
 		}
 
 		// set the flash data error message if there is one
-		$this->data['message'] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
+		$this->data['message'] = (validation_errors() ? validation_errors('<li>', '</li>') : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
 
 		// pass the user to the view
 		$this->data['group'] = $group;
@@ -814,7 +833,27 @@ class Auth extends MX_Controller {
 
 		$this->viewdata = (empty($data)) ? $this->data: $data;
 
-		$view_html = $this->load->view($view, $this->viewdata, $returnhtml);
+		//$view_html = $this->load->view($view, $this->viewdata, $returnhtml);
+		switch($view)
+		{
+			case 'auth/login':
+				//$this->viewdata['title'] = lang('login_heading');
+				$template_name = '_auth';
+				break;
+			case 'auth/signup':
+				$this->viewdata['title'] = lang('register_heading');
+				$template_name = '_auth';
+				break;
+			case 'auth/forgot_password':
+				$this->viewdata['title'] = lang('forgot_password_heading');
+				$template_name = '_auth';
+				break;
+			default:
+				$template_name = '_admin';
+		}
+
+		$this->viewdata['view'] = $view;
+		$view_html = $this->templates->$template_name($this->viewdata, $returnhtml);
 
 		if ($returnhtml) return $view_html;//This will return html on 3rd argument being true
 	}

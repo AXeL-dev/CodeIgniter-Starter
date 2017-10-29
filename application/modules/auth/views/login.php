@@ -1,28 +1,56 @@
-<h1><?php echo lang('login_heading');?></h1>
-<p><?php echo lang('login_subheading');?></p>
+<div class="ui equal width center aligned padded grid stackable">
+    <div class="row">
+        <div class="five wide column">
+            <div class="ui segments">
+                <div class="ui segment inverted nightli">
+                    <h3 class="ui header">
+                        <?php echo lang('login_heading');?>
+                    </h3>
+                </div>
+                <div class="ui segment">
+                    <?php if (isset($message) && ! empty($message)) { ?>
+                        <div class="ui error message">
+                            <ul class="list"><?php echo $message; ?></ul>
+                        </div>
+                    <?php } ?>
 
-<div id="infoMessage"><?php echo $message;?></div>
+                    <div class="description">
+                        <?php echo lang('login_subheading');?>
+                    </div>
 
-<?php echo form_open("auth/login");?>
+                    <div class="ui divider"></div>
 
-  <p>
-    <?php echo lang('login_identity_label', 'identity');?>
-    <?php echo form_input($identity);?>
-  </p>
+                    <?php echo form_open("auth/login");?>
 
-  <p>
-    <?php echo lang('login_password_label', 'password');?>
-    <?php echo form_input($password);?>
-  </p>
+                        <div class="ui input fluid">
+                            <?php echo form_input($identity, '', 'placeholder="'.lang('login_identity_label').'"');?>
+                        </div>
+                        <div class="ui divider hidden"></div>
+                        <div class="ui input fluid">
+                            <?php echo form_input($password, '', 'placeholder="'.lang('login_password_label').'"');?>
+                        </div>
+                        <div class="ui divider hidden"></div>
+                        <div class="ui input fluid checkbox">
+                            <?php echo form_checkbox('remember', '1', FALSE, 'id="remember"');?>
+                            <label class="modalTerms" for="remember" style="text-decoration:underline;cursor:pointer"><?php echo lang('login_remember_label');?></label>
+                        </div>
+                        <div class="ui divider hidden"></div>
+                        <button class="ui primary fluid button">
+                            <i class="key icon"></i>
+                            <?php echo lang('login_submit_btn'); ?>
+                        </button>
 
-  <p>
-    <?php echo lang('login_remember_label', 'remember');?>
-    <?php echo form_checkbox('remember', '1', FALSE, 'id="remember"');?>
-  </p>
+                    <?php echo form_close();?>
 
+                    <div class="ui divider hidden"></div>
 
-  <p><?php echo form_submit('submit', lang('login_submit_btn'));?></p>
+                    <a href="forgot_password" class="ui"><?php echo lang('login_forgot_password');?></a>
 
-<?php echo form_close();?>
+                    <div class="ui hidden divider"></div>
 
-<p><a href="forgot_password"><?php echo lang('login_forgot_password');?></a></p>
+                    <?php echo lang('register_before');?> <a href="signup" class="ui"><?php echo lang('register_link');?></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

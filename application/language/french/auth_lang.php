@@ -25,14 +25,21 @@ $lang['error_csrf'] = 'La validation de ce formulaire a échoué.';
 // Login
 $lang['login_heading']         = 'Se connecter';
 $lang['login_subheading']      = 'Veuillez vous connecter avec votre nom d\'utilisateur et votre mot de passe.';
-$lang['login_identity_label']  = 'E-mail/Nom d\'utilisateur :';
-$lang['login_password_label']  = 'Mot de passe :';
-$lang['login_remember_label']  = 'Rester connecté :';
+$lang['login_identity_label']  = 'E-mail/Nom d\'utilisateur';
+$lang['login_password_label']  = 'Mot de passe';
+$lang['login_remember_label']  = 'Rester connecté';
 $lang['login_submit_btn']      = 'Se connecter';
 $lang['login_forgot_password'] = 'Mot de passe oublié ?';
 
 // Logout
 $lang['logout_link']           = 'Se déconnecter';
+
+// Register
+$lang['register_before']       = 'Vous n\'avez pas de compte?';
+$lang['register_after']        = 'Vous avez déjà un compte?';
+$lang['register_link']         = 'S\'inscrire';
+$lang['register_heading']      = 'Inscription';
+$lang['register_subheading']   = 'Inscrivez-vous, c\'est gratuit!';
 
 // Index
 $lang['index_heading']           = 'Utilisateurs';
@@ -133,7 +140,7 @@ $lang['change_password_validation_new_password_confirm_label'] = 'Confirmer le n
 // Forgot Password
 $lang['forgot_password_heading']                 = 'Mot de passe oublié';
 $lang['forgot_password_subheading']              = 'Veuillez entrer votre %s pour que nous puissions vous envoyer votre nouveau mot de passe.';
-$lang['forgot_password_email_label']             = '%s :';
+$lang['forgot_password_email_label']             = '%s';
 $lang['forgot_password_submit_btn']              = 'Envoyer';
 $lang['forgot_password_validation_email_label']  = 'Adresse Email';
 $lang['forgot_password_username_identity_label'] = 'Nom d\'utilisateur';

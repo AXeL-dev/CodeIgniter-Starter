@@ -23,14 +23,21 @@ $lang['error_csrf'] = 'This form post did not pass our security checks.';
 // Login
 $lang['login_heading']         = 'Login';
 $lang['login_subheading']      = 'Please login with your email/username and password below.';
-$lang['login_identity_label']  = 'Email/Username:';
-$lang['login_password_label']  = 'Password:';
-$lang['login_remember_label']  = 'Remember Me:';
+$lang['login_identity_label']  = 'Email/Username';
+$lang['login_password_label']  = 'Password';
+$lang['login_remember_label']  = 'Remember Me';
 $lang['login_submit_btn']      = 'Login';
 $lang['login_forgot_password'] = 'Forgot your password?';
 
 // Logout
-$lang['logout_link']           = 'Logout';
+$lang['logout_link']           = 'Sign Out';
+
+// Register
+$lang['register_before']       = 'Do not have an account?';
+$lang['register_after']        = 'Already have an account?';
+$lang['register_link']         = 'Sign Up';
+$lang['register_heading']      = 'Sign Up Now';
+$lang['register_subheading']   = 'Sign up, it\'s free!';
 
 // Index
 $lang['index_heading']           = 'Users';
@@ -131,7 +138,7 @@ $lang['change_password_validation_new_password_confirm_label'] = 'Confirm New Pa
 // Forgot Password
 $lang['forgot_password_heading']                 = 'Forgot Password';
 $lang['forgot_password_subheading']              = 'Please enter your %s so we can send you an email to reset your password.';
-$lang['forgot_password_email_label']             = '%s:';
+$lang['forgot_password_email_label']             = '%s';
 $lang['forgot_password_submit_btn']              = 'Submit';
 $lang['forgot_password_validation_email_label']  = 'Email Address';
 $lang['forgot_password_username_identity_label'] = 'Username';
