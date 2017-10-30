@@ -1,31 +1,56 @@
-<h1><?php echo lang('index_heading');?></h1>
-<p><?php echo lang('index_subheading');?></p>
+<div class="sixteen wide column">
+    <div class="ui segments">
+        <div class="ui segment">
+            <h5 class="ui header">
+                <?php echo lang('index_heading');?>
+            </h5>
+        </div>
+        <div class="ui segment">
+        	<?php if (isset($message) && ! empty($message)) { ?>
+              	<div class="ui success message">
+                    <i class="close icon"></i>
+                  	<ul class="list"><?php echo $message; ?></ul>
+              	</div>
+            <?php } ?>
 
-<div id="infoMessage"><?php echo $message;?></div>
-
-<table cellpadding=0 cellspacing=10>
-	<tr>
-		<th><?php echo lang('index_fname_th');?></th>
-		<th><?php echo lang('index_lname_th');?></th>
-		<th><?php echo lang('index_email_th');?></th>
-		<th><?php echo lang('index_groups_th');?></th>
-		<th><?php echo lang('index_status_th');?></th>
-		<th><?php echo lang('index_action_th');?></th>
-	</tr>
-	<?php foreach ($users as $user):?>
-		<tr>
-            <td><?php echo htmlspecialchars($user->first_name,ENT_QUOTES,'UTF-8');?></td>
-            <td><?php echo htmlspecialchars($user->last_name,ENT_QUOTES,'UTF-8');?></td>
-            <td><?php echo htmlspecialchars($user->email,ENT_QUOTES,'UTF-8');?></td>
-			<td>
-				<?php foreach ($user->groups as $group):?>
-					<?php echo anchor("auth/edit_group/".$group->id, htmlspecialchars($group->name,ENT_QUOTES,'UTF-8')) ;?><br />
-                <?php endforeach?>
-			</td>
-			<td><?php echo ($user->active) ? anchor("auth/deactivate/".$user->id, lang('index_active_link')) : anchor("auth/activate/". $user->id, lang('index_inactive_link'));?></td>
-			<td><?php echo anchor("auth/edit_user/".$user->id, 'Edit') ;?></td>
-		</tr>
-	<?php endforeach;?>
-</table>
-
-<p><?php echo anchor('auth/create_user', lang('index_create_user_link'))?> | <?php echo anchor('auth/create_group', lang('index_create_group_link'))?></p>
+            <table class="ui celled sortable red selectable striped table">
+                <thead class="full-width">
+                    <tr>
+                        <th><?php echo lang('index_fname_th');?></th>
+						<th><?php echo lang('index_lname_th');?></th>
+						<th><?php echo lang('index_email_th');?></th>
+						<th><?php echo lang('index_groups_th');?></th>
+						<th><?php echo lang('index_status_th');?></th>
+						<th><?php echo lang('index_action_th');?></th>
+                    </tr>
+                </thead>
+                <tbody>
+                	<?php foreach ($users as $user):?>
+						<tr>
+				            <td><?php echo htmlspecialchars($user->first_name,ENT_QUOTES,'UTF-8');?></td>
+				            <td><?php echo htmlspecialchars($user->last_name,ENT_QUOTES,'UTF-8');?></td>
+				            <td><?php echo htmlspecialchars($user->email,ENT_QUOTES,'UTF-8');?></td>
+							<td>
+								<?php foreach ($user->groups as $group):?>
+									<?php echo anchor("auth/edit_group/".$group->id, htmlspecialchars($group->name,ENT_QUOTES,'UTF-8')) ;?><br />
+				                <?php endforeach?>
+							</td>
+							<td><?php echo ($user->active) ? anchor("auth/deactivate/".$user->id, '<i class="large green checkmark link icon"></i>', array('title' => lang('index_active_link'))) : anchor("auth/activate/". $user->id, '<i class="large red remove link icon"></i>', array('title' => lang('index_inactive_link')));?></td>
+							<td><?php echo anchor("auth/edit_user/".$user->id, '<i class="black pencil link icon"></i>', array('title' => lang('edit')));?></td>
+						</tr>
+					<?php endforeach;?>
+                </tbody>
+                <tfoot class="full-width">
+                    <tr>
+                        <th colspan="6">
+                            	<?php echo anchor('auth/create_group', '<i class="users icon"></i> '.lang('index_create_group_link'), array('class' => 'ui right floated small labeled icon button'))?>
+                                <?php echo anchor('auth/create_user', '<i class="user icon"></i> '.lang('index_create_user_link'), array('class' => 'ui right floated small primary labeled icon button'))?>
+                        </th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+<script src="<?php echo base_url(); ?>public/assets/admin/plugins/tablesort/jquery.tablesort.js"></script>
+<script type="text/javascript">$('table').tablesort();//tablesort plugin trigger</script>

@@ -23,16 +23,16 @@
                     <?php echo lang('create_user_lname_label', 'last_name');?>
                     <?php echo form_input($last_name);?>
                 </div>
-                <?php if($identity_column!=='email') { ?>
-                    <div class="required field">
-                        <?php
-                            echo lang('create_user_identity_label', 'identity');
-                            echo form_error('identity');
-                            echo form_input($identity);
-                        ?>
-                    </div>
-                <?php } ?>
             </div>
+            <?php if($identity_column!=='email') { ?>
+                <div class="required field">
+                    <?php
+                        echo lang('create_user_identity_label', 'identity');
+                        echo form_error('identity');
+                        echo form_input($identity);
+                    ?>
+                </div>
+            <?php } ?>
             <div class="two fields">
                 <div class="field">
                     <?php echo lang('create_user_company_label', 'company');?>

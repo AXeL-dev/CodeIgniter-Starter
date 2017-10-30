@@ -58,8 +58,8 @@ $lang['index_create_group_link'] = 'Créer un nouveau groupe';
 // Deactivate User
 $lang['deactivate_heading']                  = 'Désactiver un utilisateur';
 $lang['deactivate_subheading']               = 'Êtes-vous certain de vouloir désactiver l\'utilisateur : %s';
-$lang['deactivate_confirm_y_label']          = 'Oui :';
-$lang['deactivate_confirm_n_label']          = 'Non :';
+$lang['deactivate_confirm_y_label']          = 'Oui';
+$lang['deactivate_confirm_n_label']          = 'Non';
 $lang['deactivate_submit_btn']               = 'Envoyer';
 $lang['deactivate_validation_confirm_label'] = 'Confirmation';
 $lang['deactivate_validation_user_id_label'] = 'Identifiant';

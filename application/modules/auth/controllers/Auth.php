@@ -535,7 +535,7 @@ class Auth extends MX_Controller {
                 'value' => $this->form_validation->set_value('password_confirm'),
             );
 
-            $view = $allow_sign_up ? 'auth/signup' : 'auth/create_user';
+            $view = $allow_sign_up == true ? 'auth/signup' : 'auth/create_user';
 
             $this->_render_page($view, $this->data);
         }
@@ -846,6 +846,10 @@ class Auth extends MX_Controller {
 				break;
 			case 'auth/forgot_password':
 				$this->viewdata['title'] = lang('forgot_password_heading');
+				$template_name = '_auth';
+				break;
+			case 'reset_password':
+				$this->viewdata['title'] = lang('reset_password_heading');
 				$template_name = '_auth';
 				break;
 			default:

@@ -2,7 +2,7 @@
 
 $(document).ready(function () {
     //loadhtml();
-    paceLoading();
+    //paceLoading();
     butonactions();
     //hamburger();
     tabactions();

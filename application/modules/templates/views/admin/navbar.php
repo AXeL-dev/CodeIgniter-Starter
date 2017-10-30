@@ -8,64 +8,25 @@
     </a-->
     <div class="right menu">
         <div class="ui right aligned category search item">
-            <div class="ui transparent  icon input">
-                <input class="prompt" type="text" placeholder="Search Projects...">
+            <div class="ui transparent icon input">
+                <input class="prompt" type="text" placeholder="<?php echo lang('search'); ?>">
                 <i class="search link icon"></i>
             </div>
             <div class="results"></div>
         </div>
-        <div class="ui dropdown item labeled icon">
-            <i class="bell icon"></i>
-            <div class="ui red mini label circular">22</div>
-            <div class="menu">
-                <div class="header">
-                    People You Might Know
-                </div>
-                <div class="item">
-                    <img class="ui avatar image" src="<?php echo base_url(); ?>public/assets/admin/img/avatar/people/Enid.png">
-                    Janice Robinson
-                </div>
-                <div class="item">
-                    <img class="ui avatar image" src="<?php echo base_url(); ?>public/assets/admin/img/avatar/people/Lorie.png">
-                    Cynthia	May
-                </div>
-                <div class="item">
-                    <img class="ui avatar image" src="<?php echo base_url(); ?>public/assets/admin/img/avatar/people/Rick.png">
-                    Hugh Carter
-                </div>
-                <div class="header">
-                    Your Friends' Friends
-                </div>
-                <div class="item">
-                    <img class="ui avatar image" src="<?php echo base_url(); ?>public/assets/admin/img/avatar/people/Meggie.png">
-                    Pauline	Cain
-                </div>
-                <div class="item">
-                    <img class="ui avatar image" src="<?php echo base_url(); ?>public/assets/admin/img/avatar/people/Glenn.png">
-                    Marco Beck
-                </div>
-                <div class="item">
-                    <img class="ui avatar image" src="<?php echo base_url(); ?>public/assets/admin/img/avatar/people/Daryl.png">
-                    Sue Quinn
-                </div>
-            </div>
-        </div>
         <div class="ui dropdown item">
-            Language <i class="dropdown icon"></i>
+            <?php echo lang('language'); ?> <i class="dropdown icon"></i>
             <div class="menu">
-                <a class="item"><i class="united kingdom flag"></i>English</a>
-                <a class="item"><i class="turkey flag"></i>Turkish</a>
-                <a class="item"><i class="spain flag"></i>Spanish</a>
+                <a class="item"><i class="united kingdom flag"></i><?php echo lang('english'); ?></a>
+                <a class="item"><i class="france flag"></i><?php echo lang('french'); ?></a>
             </div>
         </div>
         <div class="ui dropdown item">
             <img class="ui mini circular image" src="<?php echo base_url(); ?>public/assets/admin/img/avatar/people/Enid.png">
             <div class="menu">
-                <a class="item" href="mail.html">Inbox</a>
-                <a class="item" href="profile.html">Profile</a>
-                <a class="item" href="settings.html">Settings</a>
+                <a class="item" href="<?php echo base_url().'auth/edit_user/'.$this->ion_auth->get_user_id(); ?>"><?php echo lang('profile'); ?></a>
+                <a class="item" href="#"><?php echo lang('settings'); ?></a>
                 <div class="ui divider"></div>
-                <a class="item">Need Help?</a>
                 <a class="item" href="<?php echo base_url(); ?>auth/logout"><?php echo lang('logout_link'); ?></a>
             </div>
         </div>

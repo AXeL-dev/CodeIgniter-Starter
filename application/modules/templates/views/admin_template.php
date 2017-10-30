@@ -17,7 +17,7 @@
     <link href="<?php echo base_url(); ?>public/assets/admin/plugins/datepicker/css/bootstrap-datepicker3.css" rel="stylesheet" />
     <link href="<?php echo base_url(); ?>public/assets/admin/dist/semantic.min.css" rel="stylesheet" />
     <link href="<?php echo base_url(); ?>public/assets/admin/css/main.css" rel="stylesheet" />
-    <link href="<?php echo base_url(); ?>public/assets/admin/plugins/pacejs/pace.css" rel="stylesheet" />
+    <!--link href="<?php echo base_url(); ?>public/assets/admin/plugins/pacejs/pace.css" rel="stylesheet" /-->
     <script src="<?php echo base_url(); ?>public/assets/admin/js/jquery-2.1.4.min.js"></script>
 </head>
 <body class="admin">
@@ -69,7 +69,7 @@
     <script src="<?php echo base_url(); ?>public/assets/admin/plugins/datepicker/js/bootstrap-datepicker.js"></script>
     <script src="<?php echo base_url(); ?>public/assets/admin/plugins/sparkline/jquery.sparkline.min.js"></script>
     <script src="<?php echo base_url(); ?>public/assets/admin/dist/semantic.min.js"></script>
-    <script data-pace-options='{ "ajax": false }' src="<?php echo base_url(); ?>public/assets/admin/plugins/pacejs/pace.js"></script>
+    <!--script data-pace-options='{ "ajax": false }' src="<?php echo base_url(); ?>public/assets/admin/plugins/pacejs/pace.js"></script-->
     <!--script src="<?php echo base_url(); ?>public/assets/admin/plugins/morris/morris.min.js"></script-->
     <!--script src="<?php echo base_url(); ?>public/assets/admin/js/customjs/custom-dashboard.js"></script-->
     <script src="<?php echo base_url(); ?>public/assets/admin/js/app.js"></script>

@@ -46,7 +46,7 @@ class Templates extends MX_Controller
     {
         // set default data
         if (! isset($data['title'])) {
-            $data['title'] = '';
+            $data['title'] = $this->lang->line('login_heading');
         }
 
         if (! isset($data['view']) && isset($data['view_name'])) {
