@@ -70,7 +70,8 @@ class Auth extends MX_Controller {
 				//if the login is successful
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
 
-				if ($this->ion_auth->is_admin()) {
+				// if the user is an admin
+				if ($this->ion_auth->logged_in() && $this->ion_auth->is_admin()) {
 					//redirect to the admin panel
 					redirect('admin', 'refresh');
 				}
