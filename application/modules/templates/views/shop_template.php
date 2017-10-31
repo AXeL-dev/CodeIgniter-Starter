@@ -17,23 +17,23 @@
     <!--link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"-->
     <link href="<?= base_url('public/assets/semantic-ui/css/semantic.min.css'); ?>" type="text/css" rel="stylesheet"
           media="screen,print"/>
-    <link href="<?= base_url('public/assets/font-awesome/font-awesome.min.css'); ?>" type="text/css" rel="stylesheet"
-          media="screen,print"/>
-    <link href="<?= base_url('public/assets/my_assets/css/style.css'); ?>" type="text/css" rel="stylesheet"
-          media="screen,print"/>
-    <link href="<?= base_url('public/assets/my_assets/css/mobile.css'); ?>" type="text/css" rel="stylesheet"
-          media="only screen,print and (max-width: 767px)"/>
-    <link href="<?= base_url('public/assets/my_assets/css/tabs.css'); ?>" type="text/css" rel="stylesheet"
-          media="only screen,print and (min-width: 768px) and (max-width: 991px)"/>
-    <link href="<?= base_url('public/assets/my_assets/css/desktop.css'); ?>" type="text/css" rel="stylesheet"
-          media="only screen,print and (min-width: 992px) and (max-width: 1199px)"/>
-    <link href="<?= base_url('public/assets/my_assets/css/large.css'); ?>" type="text/css" rel="stylesheet"
-          media="only screen,print and (min-width: 1200px) and (max-width: 1919px)"/>
-    <link href="<?= base_url('public/assets/my_assets/css/wide.css'); ?>" type="text/css" rel="stylesheet"
-          media="only screen,print and (min-width: 1920px)"/>
+    <!--link href="<?= base_url('public/assets/font-awesome/font-awesome.min.css'); ?>" type="text/css" rel="stylesheet"
+          media="screen,print"/-->
+    <!--link href="<?= base_url('public/assets/my_assets/css/style.css'); ?>" type="text/css" rel="stylesheet"
+          media="screen,print"/-->
+    <!--link href="<?= base_url('public/assets/my_assets/css/mobile.css'); ?>" type="text/css" rel="stylesheet"
+          media="only screen,print and (max-width: 767px)"/-->
+    <!--link href="<?= base_url('public/assets/my_assets/css/tabs.css'); ?>" type="text/css" rel="stylesheet"
+          media="only screen,print and (min-width: 768px) and (max-width: 991px)"/-->
+    <!--link href="<?= base_url('public/assets/my_assets/css/desktop.css'); ?>" type="text/css" rel="stylesheet"
+          media="only screen,print and (min-width: 992px) and (max-width: 1199px)"/-->
+    <!--link href="<?= base_url('public/assets/my_assets/css/large.css'); ?>" type="text/css" rel="stylesheet"
+          media="only screen,print and (min-width: 1200px) and (max-width: 1919px)"/-->
+    <!--link href="<?= base_url('public/assets/my_assets/css/wide.css'); ?>" type="text/css" rel="stylesheet"
+          media="only screen,print and (min-width: 1920px)"/-->
 
 </head>
-<style>
+<!--style>
     main {
         flex: 1 0 auto;
     }
@@ -44,7 +44,7 @@
         min-height: 100vh;
         flex-direction: column;
     }
-</style>
+</style-->
 <body>
 <!-- Side Nav -->
 <?php $this->load->view('shop/sidebar'); ?>
