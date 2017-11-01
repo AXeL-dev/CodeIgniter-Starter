@@ -1,22 +1,41 @@
-<h1><?php echo lang('reset_password_heading');?></h1>
+<div class="ui equal width center aligned padded grid stackable">
+    <div class="row">
+        <div class="five wide column">
+            <div class="ui segments">
+                <div class="ui segment inverted nightli">
+                    <h3 class="ui header">
+                        <?php echo lang('reset_password_heading');?>
+                    </h3>
+                </div>
+                <div class="ui segment">
+                    <?php if (isset($message) && ! empty($message)) { ?>
+                        <div class="ui error message">
+                            <ul class="list"><?php echo $message; ?></ul>
+                        </div>
+                    <?php } ?>
 
-<div id="infoMessage"><?php echo $message;?></div>
+                    <?php echo form_open('auth/reset_password/' . $code);?>
 
-<?php echo form_open('auth/reset_password/' . $code);?>
+                        <div class="ui input fluid">
+                        	<?php echo form_input($new_password, '', 'placeholder="'.sprintf(lang('reset_password_new_password_label'), $min_password_length).'"');?>
+                        </div>
+                        <div class="ui divider hidden"></div>
+                        <div class="ui input fluid">
+                        	<?php echo form_input($new_password_confirm, '', 'placeholder="'.lang('reset_password_new_password_confirm_label').'"');?>
+                        </div>
+                        <div class="ui divider hidden"></div>
 
-	<p>
-		<label for="new_password"><?php echo sprintf(lang('reset_password_new_password_label'), $min_password_length);?></label> <br />
-		<?php echo form_input($new_password);?>
-	</p>
+                        <?php echo form_input($user_id);?>
+                        <?php echo form_hidden($csrf); ?>
 
-	<p>
-		<?php echo lang('reset_password_new_password_confirm_label', 'new_password_confirm');?> <br />
-		<?php echo form_input($new_password_confirm);?>
-	</p>
+                        <button class="ui primary fluid button">
+                            <i class="key icon"></i>
+                            <?php echo lang('reset_password_submit_btn'); ?>
+                        </button>
 
-	<?php echo form_input($user_id);?>
-	<?php echo form_hidden($csrf); ?>
-
-	<p><?php echo form_submit('submit', lang('reset_password_submit_btn'));?></p>
-
-<?php echo form_close();?>
+                    <?php echo form_close();?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

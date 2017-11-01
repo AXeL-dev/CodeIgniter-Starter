@@ -1,25 +1,44 @@
-<h1><?php echo lang('change_password_heading');?></h1>
+<div class="ui equal width center aligned padded grid stackable">
+    <div class="row">
+        <div class="five wide column">
+            <div class="ui segments">
+                <div class="ui segment inverted nightli">
+                    <h3 class="ui header">
+                        <?php echo lang('change_password_heading');?>
+                    </h3>
+                </div>
+                <div class="ui segment">
+                    <?php if (isset($message) && ! empty($message)) { ?>
+                        <div class="ui error message">
+                            <ul class="list"><?php echo $message; ?></ul>
+                        </div>
+                    <?php } ?>
 
-<div id="infoMessage"><?php echo $message;?></div>
+                    <?php echo form_open("auth/change_password");?>
 
-<?php echo form_open("auth/change_password");?>
+                        <div class="ui input fluid">
+                              <?php echo form_input($old_password, '', 'placeholder="'.lang('change_password_old_password_label').'"');?>
+                        </div>
+                        <div class="ui divider hidden"></div>
+                        <div class="ui input fluid">
+                              <?php echo form_input($new_password, '', 'placeholder="'.sprintf(lang('change_password_new_password_label'), $min_password_length).'"');?>
+                        </div>
+                        <div class="ui divider hidden"></div>
+                        <div class="ui input fluid">
+                              <?php echo form_input($new_password_confirm, '', 'placeholder="'.lang('change_password_new_password_confirm_label').'"');?>
+                        </div>
+                        <div class="ui divider hidden"></div>
 
-      <p>
-            <?php echo lang('change_password_old_password_label', 'old_password');?> <br />
-            <?php echo form_input($old_password);?>
-      </p>
+                        <?php echo form_input($user_id);?>
 
-      <p>
-            <label for="new_password"><?php echo sprintf(lang('change_password_new_password_label'), $min_password_length);?></label> <br />
-            <?php echo form_input($new_password);?>
-      </p>
+                        <button class="ui primary fluid button">
+                            <i class="key icon"></i>
+                            <?php echo lang('change_password_submit_btn'); ?>
+                        </button>
 
-      <p>
-            <?php echo lang('change_password_new_password_confirm_label', 'new_password_confirm');?> <br />
-            <?php echo form_input($new_password_confirm);?>
-      </p>
-
-      <?php echo form_input($user_id);?>
-      <p><?php echo form_submit('submit', lang('change_password_submit_btn'));?></p>
-
-<?php echo form_close();?>
+                    <?php echo form_close();?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

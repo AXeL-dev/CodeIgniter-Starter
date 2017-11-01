@@ -127,9 +127,9 @@ $lang['edit_group_validation_desc_label']  = 'Description';
 
 // Change Password
 $lang['change_password_heading']                               = 'Change Password';
-$lang['change_password_old_password_label']                    = 'Old Password:';
-$lang['change_password_new_password_label']                    = 'New Password (at least %s characters long):';
-$lang['change_password_new_password_confirm_label']            = 'Confirm New Password:';
+$lang['change_password_old_password_label']                    = 'Old Password';
+$lang['change_password_new_password_label']                    = 'New Password (at least %s characters long)';
+$lang['change_password_new_password_confirm_label']            = 'Confirm New Password';
 $lang['change_password_submit_btn']                            = 'Change';
 $lang['change_password_validation_old_password_label']         = 'Old Password';
 $lang['change_password_validation_new_password_label']         = 'New Password';
@@ -148,8 +148,8 @@ $lang['forgot_password_identity_not_found']         = 'No record of that usernam
 
 // Reset Password
 $lang['reset_password_heading']                               = 'Change Password';
-$lang['reset_password_new_password_label']                    = 'New Password (at least %s characters long):';
-$lang['reset_password_new_password_confirm_label']            = 'Confirm New Password:';
+$lang['reset_password_new_password_label']                    = 'New Password (at least %s characters long)';
+$lang['reset_password_new_password_confirm_label']            = 'Confirm New Password';
 $lang['reset_password_submit_btn']                            = 'Change';
 $lang['reset_password_validation_new_password_label']         = 'New Password';
 $lang['reset_password_validation_new_password_confirm_label'] = 'Confirm New Password';

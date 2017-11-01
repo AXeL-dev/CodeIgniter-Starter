@@ -849,8 +849,12 @@ class Auth extends MX_Controller {
 				$this->viewdata['title'] = lang('forgot_password_heading');
 				$template_name = '_auth';
 				break;
-			case 'reset_password':
+			case 'auth/reset_password':
 				$this->viewdata['title'] = lang('reset_password_heading');
+				$template_name = '_auth';
+				break;
+			case 'auth/change_password':
+				$this->viewdata['title'] = lang('change_password_heading');
 				$template_name = '_auth';
 				break;
 			default:

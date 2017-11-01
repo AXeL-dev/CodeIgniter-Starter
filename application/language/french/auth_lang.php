@@ -129,9 +129,9 @@ $lang['edit_group_validation_desc_label']  = 'Description';
 
 // Change Password
 $lang['change_password_heading']                               = 'Changer le mot de passe';
-$lang['change_password_old_password_label']                    = 'Ancien mot de passe :';
-$lang['change_password_new_password_label']                    = 'Le nouveau mot de passe (doit contenir %s caractères minimum) :';
-$lang['change_password_new_password_confirm_label']            = 'Confirmer le nouveau mot de passe :';
+$lang['change_password_old_password_label']                    = 'Ancien mot de passe';
+$lang['change_password_new_password_label']                    = 'Le nouveau mot de passe (doit contenir %s caractères minimum)';
+$lang['change_password_new_password_confirm_label']            = 'Confirmer le nouveau mot de passe';
 $lang['change_password_submit_btn']                            = 'Enregistrer';
 $lang['change_password_validation_old_password_label']         = 'Ancien mot de passe';
 $lang['change_password_validation_new_password_label']         = 'Nouveau mot de passe';
@@ -150,8 +150,8 @@ $lang['forgot_password_identity_not_found']         = 'No record of that usernam
 
 // Reset Password
 $lang['reset_password_heading']                               = 'Modifier le mot de passe';
-$lang['reset_password_new_password_label']                    = 'Nouveau mot de passe (doit contenir %s caractères minimum) :';
-$lang['reset_password_new_password_confirm_label']            = 'Confirmez le nouveau mot de passe :';
+$lang['reset_password_new_password_label']                    = 'Nouveau mot de passe (doit contenir %s caractères minimum)';
+$lang['reset_password_new_password_confirm_label']            = 'Confirmez le nouveau mot de passe';
 $lang['reset_password_submit_btn']                            = 'Enregistrer';
 $lang['reset_password_validation_new_password_label']         = 'Nouveau mot de passe';
 $lang['reset_password_validation_new_password_confirm_label'] = 'Confirmer le nouveau mot de passe';
