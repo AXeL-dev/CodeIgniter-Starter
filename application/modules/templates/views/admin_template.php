@@ -5,9 +5,9 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-    <link rel="image_src" type="image/jpeg" href="<?php echo base_url(); ?>public/assets/admin//images/logo.png" />
+    <link rel="image_src" type="image/jpeg" href="<?php echo base_url(); ?>public/assets/admin/images/logo.png" />
     <link rel="icon" href="<?php echo base_url(); ?>public/assets/admin/img/favicon.ico" type="image/x-icon" />
-    <link rel="shortcut icon" href="<?php echo base_url(); ?>public/assets/admin/<?php echo base_url(); ?>public/assets/admin/img/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="<?php echo base_url(); ?>public/assets/admin/img/favicon.ico" type="image/x-icon" />
     <!-- Site Properities -->
     <meta name="generator" content="Semantic-Ui" />
     <title><?= $title; ?></title>
