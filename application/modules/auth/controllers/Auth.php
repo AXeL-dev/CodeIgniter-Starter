@@ -90,12 +90,9 @@ class Auth extends MX_Controller {
 					redirect('admin', 'refresh');
 				}
 				else {
-					// once logged in, we must update the cart rows 'shopper_id'
-		            Modules::run('cart/_update_rows');
-
 		            // redirection
 					$redirect_to_url = $this->session->userdata('redirect_to_url');
-
+					
 					if (! empty($redirect_to_url)) {
 						$this->session->unset_userdata('redirect_to_url');
 						redirect($redirect_to_url, 'refresh');
