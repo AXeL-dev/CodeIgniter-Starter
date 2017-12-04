@@ -6,4 +6,6 @@ Code Igniter Starter Project including:
 - A basic semantic-ui template
 - Some custom classes, helpers and libraries to code faster.
 
+![Screenshot](Signin.png)
+
 ![Screenshot](Dashboard.png)
