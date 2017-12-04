@@ -28,6 +28,7 @@
 | Database table names.
 */
 $config['tables']['users']           = 'users';
+$config['tables']['authentications'] = 'authentications'; // for Hybrid-Auth Library..
 $config['tables']['groups']          = 'groups';
 $config['tables']['users_groups']    = 'users_groups';
 $config['tables']['login_attempts']  = 'login_attempts';
@@ -128,8 +129,8 @@ $config['email_config'] = array(
 	'protocol' => 'smtp',
 	'smtp_host' => 'smtp.gmail.com',
 	'smtp_port' => '465',
-	'smtp_user' => 'xxx',
-	'smtp_pass' => 'xxx',
+	'smtp_user' => 'your_email',
+	'smtp_pass' => 'your_password',
 	'smtp_crypto' => 'ssl',
 	'mailtype' => 'html',
 	'charset' => 'utf-8',

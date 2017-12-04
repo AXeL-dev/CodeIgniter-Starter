@@ -29,6 +29,7 @@ $lang['form_validation_regex_match']		= 'الحقل {field} لا يحتوى عل
 $lang['form_validation_matches']		= 'الحقل {field} لا يساوي الحقل {param}.';
 $lang['form_validation_differs']		= 'الحقل {field} يجب أن يكون مختلف عن الحقل {param}.';
 $lang['form_validation_is_unique'] 		= 'الحقل {field} يجب أن يحتوى على قيمة غير متكررة.';
+$lang['form_validation_is_unique_update'] = 'الحقل {field} يجب أن يحتوى على قيمة غير متكررة.';
 $lang['form_validation_is_natural']		= 'الحقل {field} يجب أن يحتوى على رقم.';
 $lang['form_validation_is_natural_no_zero']	= 'الحقل {field} يجب أن يحتوى على رقم أكبر من صفر.';
 $lang['form_validation_decimal']		= 'الحقل {field} يجب أن يحتوى على رقم عشري.';

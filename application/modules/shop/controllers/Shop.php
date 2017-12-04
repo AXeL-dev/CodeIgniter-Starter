@@ -4,24 +4,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Shop extends MX_Controller
 {
     // constr.
-    function __construct() {
+    public function __construct()
+    {
         parent::__construct();
 
         // load ion_auth library
         $this->load->library('ion_auth');
 
-        // load language files
-        $this->lang->load('shop');
-
         // load templates module
         $this->load->module('templates');
+
+        // load language files
+        $this->lang->load('shop');
     }
     
     // functions
     
-    function index() {
+    public function index()
+    {
         $data['title'] = $this->lang->line('home');
         $data['view'] = 'shop/home';
+
+        $this->templates->_shop($data);
+    }
+
+    public function contact()
+    {
+        $data['title'] = $this->lang->line('contact');
+        $data['view'] = 'shop/contact';
 
         $this->templates->_shop($data);
     }

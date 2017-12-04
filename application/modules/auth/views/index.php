@@ -32,7 +32,7 @@
 				            <td><?php echo htmlspecialchars($user->email,ENT_QUOTES,'UTF-8');?></td>
 							<td>
 								<?php foreach ($user->groups as $group):?>
-									<?php echo anchor("auth/edit_group/".$group->id, htmlspecialchars($group->name,ENT_QUOTES,'UTF-8')) ;?><br />
+									<?php echo anchor("auth/edit_group/".$group->id, htmlspecialchars($group->name,ENT_QUOTES,'UTF-8'), 'class="ui blue label"'); ?>
 				                <?php endforeach?>
 							</td>
 							<td><?php echo ($user->active) ? anchor("auth/deactivate/".$user->id, '<i class="large green checkmark link icon"></i>', array('title' => lang('index_active_link'))) : anchor("auth/activate/". $user->id, '<i class="large red remove link icon"></i>', array('title' => lang('index_inactive_link')));?></td>
@@ -42,9 +42,10 @@
                 </tbody>
                 <tfoot class="full-width">
                     <tr>
-                        <th colspan="6">
-                            	<?php echo anchor('auth/create_group', '<i class="users icon"></i> '.lang('index_create_group_link'), array('class' => 'ui right floated small labeled icon button'))?>
-                                <?php echo anchor('auth/create_user', '<i class="user icon"></i> '.lang('index_create_user_link'), array('class' => 'ui right floated small primary labeled icon button'))?>
+                        <th colspan="6" class="right aligned">
+                            <?php echo anchor('auth/create_group', '<i class="users icon"></i> '.lang('index_create_group_link'), array('class' => 'ui left floated small labeled icon button'))?>
+                            <?php echo anchor('auth/create_user', '<i class="user icon"></i> '.lang('index_create_user_link'), array('class' => 'ui left floated small labeled icon button'))?>
+                            <?php echo $pagination; ?>
                         </th>
                     </tr>
                 </tfoot>
@@ -52,5 +53,3 @@
         </div>
     </div>
 </div>
-<script src="<?php echo base_url(); ?>public/assets/admin/plugins/tablesort/jquery.tablesort.js"></script>
-<script type="text/javascript">$('table').tablesort();//tablesort plugin trigger</script>

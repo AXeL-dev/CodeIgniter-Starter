@@ -14,4 +14,11 @@
 */
 
 // Index
-$lang['home']   = 'Home';
+$lang['home']         = 'Accueil';
+$lang['my_profile']   = 'Profil';
+$lang['my_orders']    = 'Mes commandes';
+$lang['my_addresses'] = 'Mes adresses';
+$lang['contact']      = 'Contact';
+
+// Errors
+$lang['you_must_be_logged_in'] = 'Vous devez être connecté';

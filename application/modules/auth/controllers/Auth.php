@@ -14,10 +14,10 @@ class Auth extends MX_Controller {
 
 		$this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
 
-		$this->lang->load('auth');
-
 		// load templates module
 		$this->load->module('templates');
+		
+		//$this->lang->load('auth'); // will be loaded when loading Templates module
 	}
 
 	// redirect if needed, otherwise display the user list
@@ -39,12 +39,26 @@ class Auth extends MX_Controller {
 			// set the flash data error message if there is one
 			$this->data['message'] = (validation_errors()) ? validation_errors('<li>', '</li>') : $this->session->flashdata('message');
 
+			// load pagination library
+            $this->load->library('custom_pagination');
+            $this->ion_auth_model->_ion_offset = $this->custom_pagination->get_offset();
+            $limit = $this->custom_pagination->get_default_limit();
+			$this->ion_auth_model->_ion_limit = $limit;
+
 			//list the users
 			$this->data['users'] = $this->ion_auth->users()->result();
 			foreach ($this->data['users'] as $k => $user)
 			{
 				$this->data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
 			}
+
+			// set pagination data
+            $pagination_data['target_base_url'] = base_url('/auth/index');
+            $pagination_data['total_rows'] = $this->ion_auth->users()->num_rows();
+            $pagination_data['offset_segment'] = $this->custom_pagination->get_default_offset_segment();
+            $pagination_data['limit'] = $limit;
+
+            $this->data['pagination'] = $this->custom_pagination->generate($pagination_data);
 
 			$this->_render_page('auth/index', $this->data);
 		}
@@ -76,8 +90,20 @@ class Auth extends MX_Controller {
 					redirect('admin', 'refresh');
 				}
 				else {
-					//redirect them back to the home page
-					redirect('/', 'refresh');
+					// once logged in, we must update the cart rows 'shopper_id'
+		            Modules::run('cart/_update_rows');
+
+		            // redirection
+					$redirect_to_url = $this->session->userdata('redirect_to_url');
+
+					if (! empty($redirect_to_url)) {
+						$this->session->unset_userdata('redirect_to_url');
+						redirect($redirect_to_url, 'refresh');
+					}
+					else {
+						//redirect them back to the home page
+						redirect('/', 'refresh');
+					}
 				}
 			}
 			else
@@ -107,6 +133,158 @@ class Auth extends MX_Controller {
 			$this->_render_page('auth/login', $this->data);
 		}
 	}
+
+    
+    //log the user in by provider
+    function login_provider($provider = '')
+    {
+        if(empty($provider)) redirect();
+        try
+        {
+            // create an instance for Hybridauth with the configuration file
+            $this->load->library('HybridAuthLib');
+
+            if ($this->hybridauthlib->serviceEnabled($provider))
+            {
+                // try to authenticate the selected $provider
+                $service = $this->hybridauthlib->authenticate($provider);
+                
+                if ($service->isUserConnected())
+                {
+                    // grab the user profile
+                    $user_profile = $service->getUserProfile();
+                    
+                    $provider_uid = $user_profile->identifier;
+                    
+                    if($this->ion_auth->login_by_provider($provider,$provider_uid))
+                    {
+                        //$data['user_profile'] = $this->ion_auth->user_by_provider();
+                        //$this->load->view('auth/user_profile',$data);
+
+                        //redirect them back to the home page
+						redirect('/', 'refresh');
+                    }
+                    else
+                    { // if authentication does not exist and email is not in use, then we create a new user 
+                        $username = $user_profile->firstName.' '.$user_profile->lastName;
+                        $password = rand(8, 15);
+                        $email = $user_profile->email;
+                        
+                        $additional_data['profileURL']    = $user_profile->profileURL;
+                        $additional_data['webSiteURL']    = $user_profile->webSiteURL;
+                        $additional_data['photoURL']    = $user_profile->photoURL;
+                        $additional_data['displayName']    = $user_profile->displayName;
+                        $additional_data['description']    = $user_profile->description;
+                        $additional_data['firstName']    = $user_profile->firstName;
+                        $additional_data['lastName']    = $user_profile->lastName;
+                        $additional_data['gender']        = $user_profile->gender;
+                        $additional_data['language']    = $user_profile->language;
+                        $additional_data['age']            = $user_profile->age;
+                        $additional_data['birthDay']    = $user_profile->birthDay;
+                        $additional_data['birthMonth']    = $user_profile->birthMonth;
+                        $additional_data['birthYear']    = $user_profile->birthYear;
+                        $additional_data['email']        = $user_profile->email;
+                        $additional_data['emailVerified']    = $user_profile->emailVerified;
+                        $additional_data['phone']        = $user_profile->phone;
+                        $additional_data['address']        = $user_profile->address;
+                        $additional_data['country']        = $user_profile->country;
+                        $additional_data['region']        = $user_profile->region;
+                        $additional_data['city']        = $user_profile->city;
+                        $additional_data['zip']            = $user_profile->zip;
+                        
+                        if($email != null && $this->ion_auth->register_by_provider($provider, $provider_uid, $username, $password, $email,  $additional_data))
+                        { // create new user && creat a new authentication for him
+                            
+                            if($this->ion_auth->login_by_provider($provider,$provider_uid))
+                            { // log user in :)
+                                // get user profile from authentications table.
+                                //$data['user_profile'] = $this->ion_auth->user_by_provider();
+                                //$this->load->view('auth/user_profile',$data);
+
+                                //redirect them back to the home page
+                                redirect('/', 'refresh');
+                            }
+                            else
+                            {
+                                //if the login was un-successful
+                                //redirect them back to the login page
+                                $this->data['message'] = 'Cannot authenticate user';
+                                
+                                $this->_render_page('auth/login', $this->data);
+                            }
+                        }
+                        else
+                        {
+                            //if the register was un-successful
+                            //redirect them back to the login page
+                            $this->data['message'] = 'Cannot authenticate user';
+                            
+                            $this->_render_page('auth/login', $this->data);
+                        }
+                    }
+                }
+                else // Cannot authenticate user
+                {
+                    $this->data['message'] = 'Cannot authenticate user';
+                    
+                    $this->_render_page('auth/login', $this->data);
+                }
+            }
+            else // This service is not enabled.
+            {
+                show_404($_SERVER['REQUEST_URI']);
+            }
+        }
+        catch(Exception $e)
+        {
+            // Display the recived error
+            $error = 'Unexpected error';
+            switch($e->getCode())
+            {
+                case 0 : $error = 'Unspecified error.'; break;
+                case 1 : $error = 'Hybriauth configuration error.'; break;
+                case 2 : $error = 'Provider not properly configured.'; break;
+                case 3 : $error = 'Unknown or disabled provider.'; break;
+                case 4 : $error = 'Missing provider application credentials.'; break;
+                case 5 : log_message('debug', 'controllers.HAuth.login: Authentification failed. The user has canceled the authentication or the provider refused the connection.');
+                         //redirect();
+                         if (isset($service))
+                         {
+                             log_message('debug', 'controllers.HAuth.login: logging out from service.');
+                             $service->logout();
+                         }
+                         show_error('User has cancelled the authentication or the provider refused the connection.');
+                         break;
+                case 6 : $error = 'User profile request failed. Most likely the user is not connected to the provider and he should to authenticate again.';
+                         break;
+                case 7 : $error = 'User not connected to the provider.';
+                         break;
+            }
+
+            if (isset($service))
+            {
+                $service->logout();
+            }
+            
+            // well, basically your should not display this to the end user, just give him a hint and move on..
+            $this->data['message'] = $error;
+            
+            // load error view
+            $this->_render_page('auth/login', $this->data);
+        }
+    }
+
+    // important for HybridIgniter library..
+    public function provider_endpoint()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'GET')
+        {
+            $_GET = $_REQUEST;
+        }
+        require_once APPPATH.'/third_party/hybridauth/index.php';
+    }
+
+
 
 	// log the user out
 	public function logout()

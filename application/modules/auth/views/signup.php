@@ -66,8 +66,8 @@
         <?php echo lang('register_after');?> <a href="login" class="ui"><?php echo lang('login_heading');?></a>
     </div>
 </div>
-<!--script src="<?php echo base_url(); ?>public/assets/admin/js/jquery-2.1.4.min.js"></script-->
-<!--script src="<?php echo base_url(); ?>public/assets/admin/dist/semantic.min.js"></script-->
+<!--script src="<?php echo base_url('public/assets/admin/js/jquery-2.1.4.min.js'); ?>"></script-->
+<!--script src="<?php echo base_url('public/assets/admin/dist/semantic.min.js'); ?>"></script-->
 <!--script>
     $('.ui.dropdown').dropdown();
 </script-->

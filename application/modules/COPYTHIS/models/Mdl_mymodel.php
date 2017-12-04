@@ -1,13 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Mdl_mymodel extends MY_Custom_Model
+class Mdl_mymodel extends Custom_Model
 {
     // attr.
-    private $table = "tablename";
+    protected $table = "tablename";
     
     // constr.
-    function __construct() {
+    public function __construct()
+    {
         parent::__construct();
     }
     

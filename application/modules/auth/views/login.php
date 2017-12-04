@@ -1,3 +1,19 @@
+<?php
+if(!isset($identity) || !isset($password)):
+    $identity = array(
+        'name' => 'identity',
+        'id' => 'identity',
+        'type' => 'text',
+        'value' => '',
+    );
+    $password = array(
+        'name' => 'password',
+        'id' => 'password',
+        'type' => 'password',
+    );
+endif;
+?>
+
 <div class="ui equal width center aligned padded grid stackable">
     <div class="row">
         <div class="five wide column">
@@ -42,13 +58,23 @@
 
                     <?php echo form_close();?>
 
+                    <div class="ui horizontal divider">Or</div>
+
+                    <?php
+                        echo anchor('auth/login_provider/Google','<i class="google plus icon"></i> Login With Google', 'class="ui google plus fluid button"');
+                        
+                        //echo anchor('auth/login_provider/Twitter','<i class="twitter icon"></i> Login With Twitter', 'class="ui twitter fluid button"');
+                        
+                        echo anchor('auth/login_provider/Facebook','<i class="facebook icon"></i> Login With Facebook', 'class="ui facebook fluid button"');
+                    ?>
+
                     <div class="ui divider hidden"></div>
 
-                    <a href="forgot_password" class="ui"><?php echo lang('login_forgot_password');?></a>
+                    <a href="<?php echo base_url('auth/forgot_password'); ?>" class="ui"><?php echo lang('login_forgot_password');?></a>
 
                     <div class="ui hidden divider"></div>
 
-                    <?php echo lang('register_before');?> <a href="signup" class="ui"><?php echo lang('register_link');?></a>
+                    <?php echo lang('register_before');?> <a href="<?php echo base_url('auth/signup'); ?>" class="ui"><?php echo lang('register_link');?></a>
                 </div>
             </div>
         </div>
