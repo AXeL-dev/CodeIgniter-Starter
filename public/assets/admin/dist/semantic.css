@@ -26748,6 +26748,12 @@ a.ui.card:hover,
   transform: rotate(180deg);
 }
 
+.ui.accordion.right .item.title > .dropdown.icon {
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
 /* Header */
 
 .ui.accordion .ui.header .dropdown.icon {
@@ -26766,7 +26772,7 @@ a.ui.card:hover,
   transform: rotate(90deg);
 }
 
-.ui.accordion.menu .item .active.title > .dropdown.icon {
+.ui.accordion.menu .item .active.title > .dropdown.icon, .ui.accordion.right .item.active.title > .dropdown.icon {
   -webkit-transform: rotate(90deg);
   -ms-transform: rotate(90deg);
   transform: rotate(90deg);

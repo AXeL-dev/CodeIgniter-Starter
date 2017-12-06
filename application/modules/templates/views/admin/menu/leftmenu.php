@@ -13,7 +13,7 @@
     </span>
 </a>
 
-<div class="ui accordion">
+<div class="ui accordion right">
 
     <div class="ui item title<?= $users_active ?>">
         <i class="dropdown icon"></i>
