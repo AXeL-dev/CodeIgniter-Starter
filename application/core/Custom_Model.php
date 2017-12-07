@@ -47,8 +47,13 @@ class Custom_Model extends CI_Model
     }
 
     // Ex: SELECT * FROM tablename WHERE $col LIKE $value
-    public function get_where_like($col, $value) {
-        $this->db->like($col, $value);
+    public function get_where_like($col, $value, $or_like = false) {
+        if ($or_like) {
+            $this->db->or_like($col, $value);
+        }
+        else {
+            $this->db->like($col, $value);
+        }
         $query = $this->db->get($this->table);
         
         return $query;

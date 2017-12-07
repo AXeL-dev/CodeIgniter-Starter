@@ -62,8 +62,8 @@ class Custom_Controller extends MX_Controller
         return $query;
     }
 
-    public function _get_where_like($col, $value) {
-        $query = $this->{$this->model}->get_where_like($col, $value);
+    public function _get_where_like($col, $value, $or_like = false) {
+        $query = $this->{$this->model}->get_where_like($col, $value, $or_like);
         
         return $query;
     }
@@ -283,7 +283,7 @@ class Custom_Controller extends MX_Controller
     //======================
 
     // custom read function: list_with_pagination
-    public function _custom_list_with_pagination($query, $object_name, $view, $title, $pagination_base_url, $pagination_limit, $template_name = '_admin', $allow_access_for_non_admin = false, $total_rows = -1)
+    public function _custom_list_with_pagination($query, $object_name, $view, $title, $pagination_base_url, $pagination_limit, $template_name = '_admin', $allow_access_for_non_admin = false, $total_rows = -1, $pagination_template = 'default')
     {
         if ($allow_access_for_non_admin || is_admin($this))
         {
@@ -307,7 +307,8 @@ class Custom_Controller extends MX_Controller
             $pagination_data['limit'] = $pagination_limit;
 
             // generate pagination
-            $data['pagination'] = $this->custom_pagination->generate($pagination_data);
+            $data['pagination'] = $this->custom_pagination->generate($pagination_data, $pagination_template);
+            $data['showing_statement'] = $this->custom_pagination->get_showing_statement($pagination_data['total_rows'], $this->custom_pagination->get_offset(), $pagination_limit);
 
             // load template
             $data['title'] = $title;
