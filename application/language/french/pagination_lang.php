@@ -14,4 +14,4 @@
 */
 
 // Index
-$lang['showing_statement'] = 'Affichage de %d à %d de %d résultats';
+$lang['showing_statement'] = 'Affichage de %d à %d sur %d résultats';
