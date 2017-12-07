@@ -152,7 +152,7 @@ Class Custom_pagination
 
         $this->CI->lang->load('pagination');
 
-        $showing_statement = sprintf($this->CI->lang->line('showing_statement'), $from, $to, $total_rows);
+        $showing_statement = $total_rows > 0 ? sprintf($this->CI->lang->line('showing_statement'), $from, $to, $total_rows) : '';
 
         return $showing_statement;
     }
