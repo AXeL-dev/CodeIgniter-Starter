@@ -223,13 +223,10 @@ if ( ! function_exists('get_more_css'))
 		// @! use '|' to separate your views if you have more than one
 		$css_array = array(
 				array('href' => $path.'admin/plugins/tinymce/skins/lightgray/skin.min.css',
-					  'load_on_view' => 'blog/create|blog/update|plant/create|plant/update'),
+					  'load_on_view' => ''),
 
 				array('href' => $path.'admin/plugins/calendar/calendar.min.css',
-					  'load_on_view' => 'blog/create|blog/update|order/checkout'),
-
-				array('href' => $path.'custom/css/pagination.css',
-					  'load_on_view' => 'plant/index')
+					  'load_on_view' => '')
 		);
 
 		$view_css = filter_array($css_array, $view_name);
@@ -250,28 +247,25 @@ if ( ! function_exists('get_more_js'))
 		// @! use '|' to separate your views if you have more than one
 		$js_array = array(
 				array('src' => $path.'admin/plugins/tablesort/jquery.tablesort.js',
-					  'load_on_view' => 'auth/index|blog/list|plant/list|plant/ambiance/list|plant/room_type/list|tag/index|order/admin/list|order/index|comment/admin/index|subscription/admin/index'),
+					  'load_on_view' => 'auth/index'),
 
 				array('src' => $path.'custom/js/tablesort.js',
-					  'load_on_view' => 'auth/index|blog/list|plant/list|plant/ambiance/list|plant/room_type/list|tag/index|order/admin/list|order/index|comment/admin/index|subscription/admin/index'),
+					  'load_on_view' => 'auth/index'),
 
 				array('src' => $path.'admin/plugins/calendar/calendar.min.js',
-					  'load_on_view' => 'blog/create|blog/update|order/checkout'),
+					  'load_on_view' => ''),
 
 				array('src' => $path.'custom/js/datepicker.js',
-					  'load_on_view' => 'blog/create|blog/update'),
+					  'load_on_view' => ''),
 
 				array('src' => $path.'custom/js/timepicker.js',
-					  'load_on_view' => 'order/checkout'),
+					  'load_on_view' => ''),
 
 				array('src' => $path.'admin/plugins/tinymce/tinymce.min.js',
-					  'load_on_view' => 'blog/create|blog/update|plant/create|plant/update'),
+					  'load_on_view' => ''),
 
 				array('src' => $path.'custom/js/htmleditor.js',
-					  'load_on_view' => 'blog/create|blog/update|plant/create|plant/update'),
-
-				array('src' => $path.'custom/js/rating.js',
-					  'load_on_view' => 'plant/show'),
+					  'load_on_view' => ''),
 
 				array('src' => $path.'admin/plugins/chartjs/Chart.min.js',
 					  'load_on_view' => 'admin/dashboard'),
