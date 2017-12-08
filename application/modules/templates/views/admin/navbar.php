@@ -1,4 +1,4 @@
-<div class="ui fixed top  menu no-border no-radius borderless navmenu">
+<div class="ui fixed top  menu no-border no-radius borderless navmenu <?php echo $this->session->userdata('topmenu_color'); ?>">
     <a class="item active no-padding logo" href="dashboard.html" <?php echo $this->session->userdata('default_menu') == 'thin' ? 'style="width: 100px;"' : 'style="width: 250px;"'; ?>>
 
         <img class="ui image logoImg" src="<?php echo base_url('public/assets/admin/img/logo.png'); ?>" />

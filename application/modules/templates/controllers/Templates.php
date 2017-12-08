@@ -51,6 +51,24 @@ class Templates extends MX_Controller
     // load admin template
     public function _admin($data = array(), $returnhtml = false)
     {
+        // load settings (if not loaded)
+        $session_leftmenu = $this->session->userdata('default_menu');
+        //$session_leftmenu_color = $this->session->userdata('leftmenu_color');
+        //$session_topmenu_color = $this->session->userdata('topmenu_color');
+
+        if (empty($session_leftmenu)) { // PS: DASHBOARD_LEFTMENU settings can take only two values ('default' or 'thin')
+            // get settings from db
+            $settings = Modules::run('admin/_get_settings');
+
+            $leftmenu = isset($settings['DASHBOARD_LEFTMENU']) ? $settings['DASHBOARD_LEFTMENU'] : '';
+            $leftmenu_color = isset($settings['DASHBOARD_LEFTMENU_COLOR']) ? $settings['DASHBOARD_LEFTMENU_COLOR'] : '';
+            $topmenu_color = isset($settings['DASHBOARD_TOPMENU_COLOR']) ? $settings['DASHBOARD_TOPMENU_COLOR'] : '';
+
+            $this->session->set_userdata('default_menu', $leftmenu);
+            $this->session->set_userdata('leftmenu_color', $leftmenu_color);
+            $this->session->set_userdata('topmenu_color', $topmenu_color);
+        }
+
         // load lang files
         $this->lang->load('admin'); // not needed if already loaded
 

@@ -35,7 +35,7 @@ $lang['save']        = 'Enregister';
 // Menu
 $lang['back_to_home']  = 'Acceuil';
 $lang['navbar_color']  = 'Barre de navigation';
-$lang['sidebar_color'] = 'Barre latérale';
+$lang['sidebar_color'] = 'Barre de menu';
 
 // Dashboard
 $lang['plants_to_deliver']    = 'Plantes à livrer';
@@ -47,3 +47,10 @@ $lang['plants_by_room_type']  = 'Plantes par type de chambre';
 $lang['this_year_sales_amout']  = 'Montant annuel des ventes par mois';
 $lang['this_week_sales_amount'] = 'Montant des ventes de la semaine';
 $lang['best_selling_plants']    = 'Plantes les plus vendus';
+
+// Settings
+$lang['dashboard_leftmenu'] = 'Menu';
+$lang['default']            = 'Par défaut';
+$lang['minimalistic']       = 'Minimaliste';
+$lang['dashboard_color']    = 'Couleur';
+$lang['settings_saved']     = 'Réglages sauvegardés!';

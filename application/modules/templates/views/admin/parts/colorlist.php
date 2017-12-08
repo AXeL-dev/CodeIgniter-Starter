@@ -1,4 +1,8 @@
 <li>
+    <a class="ui segment" data-addClass="" style="border: none;">
+    </a>
+</li>
+<li>
     <a class="ui segment yellow inverted" data-addClass="inverted yellow">
     </a>
 </li>

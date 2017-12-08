@@ -273,4 +273,35 @@ class Custom_Model extends CI_Model
 
         return $query;
     }
+
+    // Ex: SELECT * FROM my_table LEFT JOIN snd_table ON my_table.id = snd_table.id WHERE $where_column LIKE $where_value (ORDER BY $order_by) LIMIT $offset, $limit
+    public function join_where_like_with_limit($where_column, $where_value, $table_to_join, $join_on, $limit, $offset = 0, $selection = '*', $order_by = '', $or_like = false, $join_type = 'left')
+    {
+        $this->db->select($selection);
+        $this->db->from($this->table);
+        if (is_array($table_to_join) && is_array($join_on)) {
+            $i = 0;
+            foreach ($table_to_join as $table)
+            {
+                $this->db->join($table, $join_on[$i], $join_type);
+                $i++;
+            }
+        }
+        else {
+            $this->db->join($table_to_join, $join_on, $join_type);
+        }
+        if ($or_like) {
+            $this->db->or_like($where_column, $where_value);
+        }
+        else {
+            $this->db->like($where_column, $where_value);
+        }
+        $this->db->limit($limit, $offset);
+        if (! empty($order_by)) {
+            $this->db->order_by($order_by);
+        }
+        $query = $this->db->get();
+
+        return $query;
+    }
 }

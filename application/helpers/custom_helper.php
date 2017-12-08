@@ -222,11 +222,14 @@ if ( ! function_exists('get_more_css'))
 		// @! leave load_on_view empty if you want the css file to be loaded on any view
 		// @! use '|' to separate your views if you have more than one
 		$css_array = array(
-				/*array('href' => $path.'admin/plugins/tinymce/skins/lightgray/skin.min.css',
-					  'load_on_view' => 'blog/create|blog/update'),
+				array('href' => $path.'admin/plugins/tinymce/skins/lightgray/skin.min.css',
+					  'load_on_view' => 'blog/create|blog/update|plant/create|plant/update'),
 
-				array('href' => $path.'semantic-ui/calendar/calendar.min.css',
-					  'load_on_view' => 'blog/create|blog/update')*/
+				array('href' => $path.'admin/plugins/calendar/calendar.min.css',
+					  'load_on_view' => 'blog/create|blog/update|order/checkout'),
+
+				array('href' => $path.'custom/css/pagination.css',
+					  'load_on_view' => 'plant/index')
 		);
 
 		$view_css = filter_array($css_array, $view_name);
@@ -247,10 +250,28 @@ if ( ! function_exists('get_more_js'))
 		// @! use '|' to separate your views if you have more than one
 		$js_array = array(
 				array('src' => $path.'admin/plugins/tablesort/jquery.tablesort.js',
-					  'load_on_view' => 'auth/index'),
+					  'load_on_view' => 'auth/index|blog/list|plant/list|plant/ambiance/list|plant/room_type/list|tag/index|order/admin/list|order/index|comment/admin/index|subscription/admin/index'),
 
 				array('src' => $path.'custom/js/tablesort.js',
-					  'load_on_view' => 'auth/index'),
+					  'load_on_view' => 'auth/index|blog/list|plant/list|plant/ambiance/list|plant/room_type/list|tag/index|order/admin/list|order/index|comment/admin/index|subscription/admin/index'),
+
+				array('src' => $path.'admin/plugins/calendar/calendar.min.js',
+					  'load_on_view' => 'blog/create|blog/update|order/checkout'),
+
+				array('src' => $path.'custom/js/datepicker.js',
+					  'load_on_view' => 'blog/create|blog/update'),
+
+				array('src' => $path.'custom/js/timepicker.js',
+					  'load_on_view' => 'order/checkout'),
+
+				array('src' => $path.'admin/plugins/tinymce/tinymce.min.js',
+					  'load_on_view' => 'blog/create|blog/update|plant/create|plant/update'),
+
+				array('src' => $path.'custom/js/htmleditor.js',
+					  'load_on_view' => 'blog/create|blog/update|plant/create|plant/update'),
+
+				array('src' => $path.'custom/js/rating.js',
+					  'load_on_view' => 'plant/show'),
 
 				array('src' => $path.'admin/plugins/chartjs/Chart.min.js',
 					  'load_on_view' => 'admin/dashboard'),
@@ -302,7 +323,7 @@ if ( ! function_exists('get_default_meta_keywords'))
 	function get_default_meta_keywords()
 	{
 		// TODO: add a lang file (meta_lang) so we can translate keywords
-		return "shop, plant, ambiance, green, jardin";
+		return "shop";
 	}
 }
 
@@ -311,7 +332,7 @@ if ( ! function_exists('get_default_meta_description'))
 {
 	function get_default_meta_description()
 	{
-		return "plant shop";
+		return "shop";
 	}
 }
 

@@ -44,6 +44,11 @@ class Admin extends MX_Controller
     {
         if (is_admin($this))
         {
+            // set data
+            $data['settings'] = $this->_get_settings();
+            $data['message'] = $this->session->flashdata('message');
+            $data['message_type'] = $this->session->flashdata('message_type');
+
             // load template
             $data['title'] = $this->lang->line('settings');
             $data['view'] = 'admin/settings';
@@ -52,12 +57,64 @@ class Admin extends MX_Controller
         }
     }
 
+    public function save_settings()
+    {
+        if (is_admin($this))
+        {
+            $settings = array(
+                            array('name'  => 'DASHBOARD_LEFTMENU',
+                                  'value' => $this->input->post('dashboard_leftmenu')
+                            ),
+
+                            array('name'  => 'DASHBOARD_LEFTMENU_COLOR',
+                                  'value' => $this->input->post('dashboard_leftmenu_color')
+                            ),
+
+                            array('name'  => 'DASHBOARD_TOPMENU_COLOR',
+                                  'value' => $this->input->post('dashboard_topmenu_color')
+                            )
+                        );
+
+            // delete old settings
+            $this->db->truncate('settings');
+
+            // insert new one(s)
+            foreach ($settings as $row) {
+                $this->db->insert('settings', $row);
+            }
+
+            // clear session data
+            $this->session->unset_userdata('default_menu');
+            $this->session->unset_userdata('leftmenu_color');
+            $this->session->unset_userdata('topmenu_color');
+
+            // set success message
+            $this->session->set_flashdata('message', lang('settings_saved'));
+            $this->session->set_flashdata('message_type', 'success');
+
+            redirect('admin/settings');
+        }
+    }
+
+    public function _get_settings()
+    {
+        $settings = array();
+
+        $query = $this->db->get('settings');
+
+        foreach($query->result() as $param) {
+            $settings[$param->name] = $param->value;
+        }
+
+        return $settings;
+    }
+
     public function switch_menu()
     {
         if (is_admin($this))
         {
             $default_menu = $this->session->userdata('default_menu');
-            $menu = $default_menu == 'thin' ? '' : 'thin';
+            $menu = $default_menu == 'thin' ? 'default' : 'thin';
 
             $this->session->set_userdata('default_menu', $menu);
 

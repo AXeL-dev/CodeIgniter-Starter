@@ -156,6 +156,12 @@ class Custom_Controller extends MX_Controller
         return $query;
     }
 
+    public function _join_where_like_with_limit($where_column, $where_value, $table_to_join, $join_on, $limit, $offset = 0, $selection = '*', $order_by = '', $or_like = false, $join_type = 'left') {
+        $query = $this->{$this->model}->join_where_like_with_limit($where_column, $where_value, $table_to_join, $join_on, $limit, $offset, $selection, $order_by, $or_like, $join_type);
+        
+        return $query;
+    }
+
     //======================
     //   data functions
     //======================

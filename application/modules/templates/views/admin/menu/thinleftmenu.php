@@ -1,4 +1,3 @@
-
 <a href="<?php echo base_url('admin'); ?>" class="ui medium image borderless">
     <img src="<?php echo base_url('public/assets/admin/img/bg/6.png'); ?>" />
 </a>

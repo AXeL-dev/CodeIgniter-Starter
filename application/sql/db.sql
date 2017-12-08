@@ -124,6 +124,20 @@ CREATE TABLE `languages` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 #
+# Table structure for table 'settings'
+#
+
+DROP TABLE IF EXISTS `settings`;
+
+CREATE TABLE `settings` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `value` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `uc_settings` UNIQUE (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+#
 # Dumping data for table 'groups'
 #
 

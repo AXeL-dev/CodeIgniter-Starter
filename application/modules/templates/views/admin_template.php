@@ -14,14 +14,15 @@
     <meta name="description" content="<?= $meta_description; ?>" />
     <meta name="keywords" content="<?= $meta_keywords; ?>" />
     <meta name="author" content="<?= $meta_author; ?>" />
-    <link href="<?php echo base_url('public/assets/admin/dist/semantic.min.css'); ?>" rel="stylesheet" />
+    <link href="<?php echo base_url('public/assets/admin/semantic-ui/semantic.min.css'); ?>" rel="stylesheet" />
     <link href="<?php echo base_url('public/assets/admin/css/main.css'); ?>" rel="stylesheet" />
+    <link href="<?php echo base_url('public/assets/custom/css/media.css'); ?>" type="text/css" rel="stylesheet" />
     <script src="<?php echo base_url('public/assets/admin/js/jquery-2.1.4.min.js'); ?>"></script>
     <?php load_css_array($more_css); ?>
 </head>
 <body class="admin">
     <!--sidebar mobile-->
-    <div class="ui vertical push sidebar menu" id="toc">
+    <div class="ui vertical push sidebar menu <?php echo $this->session->userdata('leftmenu_color'); ?>" id="toc">
         <?php $this->load->view('admin/mobile/mobilesidebar'); ?>
     </div>
     <!--sidebar mobile-->
@@ -64,10 +65,12 @@
         </div>
     </div>
     <script src="<?php echo base_url('public/assets/admin/plugins/nicescrool/jquery.nicescroll.min.js'); ?>"></script>
-    <script src="<?php echo base_url('public/assets/admin/dist/semantic.min.js'); ?>"></script>
+    <script src="<?php echo base_url('public/assets/admin/semantic-ui/semantic.min.js'); ?>"></script>
     <script src="<?php echo base_url('public/assets/admin/js/app.js'); ?>"></script>
     <script type="text/javascript">
         var base_url = '<?php echo base_url(); ?>';
+        var leftmenu_color = '<?php echo $this->session->userdata('leftmenu_color'); ?>';
+        var topmenu_color = '<?php echo $this->session->userdata('topmenu_color'); ?>';
     </script>
     <script src="<?php echo base_url('public/assets/custom/js/search.js'); ?>"></script>
     <?php load_js_array($more_js); ?>

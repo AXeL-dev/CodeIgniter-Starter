@@ -23,26 +23,29 @@ $(document).ready(function () {
 
 //Sidebar And Navbar Coloring Function (This button on Footer)
 function colorize() {
-    var a;
-    var b;
-    //$(".footer").load("html/loadfooter.html", function () {
-        $(".colorlist li a").on("click", function (b) {
-            var c = $(this).attr("data-addClass");
-            b.preventDefault();
-            $(".navmenu, .sidemenu2").removeClass(a).addClass(c);
-            a = c;
-        });
-        $(".sidecolor li a").on("click", function (a) {
-            var c = $(this).attr("data-addClass");
-            a.preventDefault();
-            $(".sidemenu, .sidebar").removeClass(b).addClass(c);
-            $(".accordion").removeClass("inverted").addClass("inverted");
-            b = c;
-        });
-        $(".colorize").popup({
-            on: "click"
-        });
-    //});
+    var a = topmenu_color;
+    var b = leftmenu_color;
+
+    $(".colorlist li a").on("click", function (b) {
+        var c = $(this).attr("data-addClass");
+        b.preventDefault();
+        $(".navmenu, .sidemenu2").removeClass(a).addClass(c);
+        $("input[type=\"hidden\"][name=\"dashboard_topmenu_color\"]").val(c);
+        a = c;
+    });
+
+    $(".sidecolor li a").on("click", function (a) {
+        var c = $(this).attr("data-addClass");
+        a.preventDefault();
+        $(".sidemenu, .sidebar").removeClass(b).addClass(c);
+        $(".accordion").removeClass("inverted").addClass("inverted");
+        $("input[type=\"hidden\"][name=\"dashboard_leftmenu_color\"]").val(c);
+        b = c;
+    });
+
+    /*$(".colorize").popup({
+        on: "click"
+    });*/
 }
 //Sidebar And Navbar Coloring Function (This button on Footer)
 

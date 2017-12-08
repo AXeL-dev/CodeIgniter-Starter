@@ -47,3 +47,10 @@ $lang['plants_by_room_type']  = 'Plants by room type';
 $lang['this_year_sales_amout']  = 'This year sales amount';
 $lang['this_week_sales_amount'] = 'This week sales amount';
 $lang['best_selling_plants']    = 'Best selling plants';
+
+// Settings
+$lang['dashboard_leftmenu'] = 'Menu';
+$lang['default']            = 'Default';
+$lang['minimalistic']       = 'Minimalistic';
+$lang['dashboard_color']    = 'Color';
+$lang['settings_saved']     = 'Settings Saved!';
