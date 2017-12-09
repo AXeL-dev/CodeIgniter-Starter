@@ -1,0 +1,55 @@
+/*------------------------
+   Accordion right icons
+--------------------------*/
+
+.ui.accordion.right .item.title > .dropdown.icon {
+	-webkit-transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+	transform: rotate(180deg);
+}
+
+.ui.accordion.right .item.active.title > .dropdown.icon {
+	-webkit-transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
+	transform: rotate(90deg);
+}
+
+/*-------------------
+   Leaf rating icon
+--------------------*/
+
+.ui.leaf.rating .icon {
+  font-family: 'Icons';
+  width: 1.4em;
+  height: auto;
+  background: transparent;
+  color: rgba(0, 0, 0, 0.15);
+  text-shadow: none !important;
+}
+
+.ui.leaf.rating .icon:before {
+  content: '\f06c';
+}
+
+/* Active */
+
+.ui.leaf.rating .active.icon:before {
+  content: '\f06c';
+}
+
+/* Active Leaf */
+
+.ui.leaf.rating .active.icon {
+  background: transparent !important;
+  color: #4fb99d !important;
+  text-shadow: 0px -1px 0px #ffffff, -1px 0px 0px #ffffff, 0px 1px 0px #ffffff, 1px 0px 0px #ffffff !important;
+}
+
+/* Selected Leaf */
+
+.ui.leaf.rating .icon.selected,
+.ui.leaf.rating .icon.selected.active {
+  background: transparent !important;
+  color: #00a276 !important;
+  text-shadow: 0px -1px 0px #ffffff, -1px 0px 0px #ffffff, 0px 1px 0px #ffffff, 1px 0px 0px #ffffff !important;
+}

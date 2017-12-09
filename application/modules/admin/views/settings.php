@@ -3,7 +3,7 @@
         $message_type = 'error';
     }
 
-    $dashboard_leftmenu       = isset($settings['DASHBOARD_LEFTMENU']) ? $settings['DASHBOARD_LEFTMENU'] : '';
+    $dashboard_leftmenu       = isset($settings['DASHBOARD_LEFTMENU']) ? $settings['DASHBOARD_LEFTMENU'] : 'default';
     $dashboard_leftmenu_color = isset($settings['DASHBOARD_LEFTMENU_COLOR']) ? $settings['DASHBOARD_LEFTMENU_COLOR'] : '';
     $dashboard_topmenu_color  = isset($settings['DASHBOARD_TOPMENU_COLOR']) ? $settings['DASHBOARD_TOPMENU_COLOR'] : '';
 ?>

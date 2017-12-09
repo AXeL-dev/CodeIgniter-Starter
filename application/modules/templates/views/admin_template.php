@@ -14,10 +14,10 @@
     <meta name="description" content="<?= $meta_description; ?>" />
     <meta name="keywords" content="<?= $meta_keywords; ?>" />
     <meta name="author" content="<?= $meta_author; ?>" />
-    <link href="<?php echo base_url('public/assets/admin/semantic-ui/semantic.min.css'); ?>" rel="stylesheet" />
+    <link href="<?php echo base_url('public/assets/semantic-ui/semantic.min.css'); ?>" rel="stylesheet" />
+    <link href="<?php echo base_url('public/assets/custom/css/semantic_tweaks.css'); ?>" rel="stylesheet" />
     <link href="<?php echo base_url('public/assets/admin/css/main.css'); ?>" rel="stylesheet" />
     <link href="<?php echo base_url('public/assets/custom/css/media.css'); ?>" type="text/css" rel="stylesheet" />
-    <script src="<?php echo base_url('public/assets/admin/js/jquery-2.1.4.min.js'); ?>"></script>
     <?php load_css_array($more_css); ?>
 </head>
 <body class="admin">
@@ -64,8 +64,9 @@
             </div>
         </div>
     </div>
+    <script src="<?php echo base_url('public/assets/jquery/jquery-3.2.1.min.js'); ?>"></script>
     <script src="<?php echo base_url('public/assets/admin/plugins/nicescrool/jquery.nicescroll.min.js'); ?>"></script>
-    <script src="<?php echo base_url('public/assets/admin/semantic-ui/semantic.min.js'); ?>"></script>
+    <script src="<?php echo base_url('public/assets/semantic-ui/semantic.min.js'); ?>"></script>
     <script src="<?php echo base_url('public/assets/admin/js/app.js'); ?>"></script>
     <script type="text/javascript">
         var base_url = '<?php echo base_url(); ?>';

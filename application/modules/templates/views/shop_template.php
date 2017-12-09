@@ -11,8 +11,9 @@
         <meta name="robots" content="index, follow, noodp">
         <title><?= $title; ?></title>
         <!-- CSS  -->
-        <link href="<?= base_url('public/assets/admin/semantic-ui/semantic.min.css'); ?>" type="text/css" rel="stylesheet"
+        <link href="<?= base_url('public/assets/semantic-ui/semantic.min.css'); ?>" type="text/css" rel="stylesheet"
               media="screen,print"/>
+        <link href="<?= base_url('public/assets/custom/css/semantic_tweaks.css'); ?>" type="text/css" rel="stylesheet" />
         <link href="<?= base_url('public/assets/custom/css/init.css'); ?>" type="text/css" rel="stylesheet" />
         <?php load_css_array($more_css); ?>
     </head>
@@ -36,8 +37,8 @@
         </div>
 
         <!-- Scripts -->
-        <script type="text/javascript" src="<?= base_url('public/assets/admin/js/jquery-2.1.4.min.js'); ?>"></script>
-        <script type="text/javascript" src="<?= base_url('public/assets/admin/semantic-ui/semantic.min.js'); ?>"></script>
+        <script type="text/javascript" src="<?= base_url('public/assets/jquery/jquery-3.2.1.min.js'); ?>"></script>
+        <script type="text/javascript" src="<?= base_url('public/assets/semantic-ui/semantic.min.js'); ?>"></script>
         <script type="text/javascript" src="<?= base_url('public/assets/custom/js/init.js'); ?>"></script>
         <?php load_js_array($more_js); ?>
     </body>

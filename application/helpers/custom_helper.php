@@ -225,7 +225,7 @@ if ( ! function_exists('get_more_css'))
 				array('href' => $path.'admin/plugins/tinymce/skins/lightgray/skin.min.css',
 					  'load_on_view' => ''),
 
-				array('href' => $path.'admin/plugins/calendar/calendar.min.css',
+				array('href' => $path.'semantic-ui/calendar/calendar.min.css',
 					  'load_on_view' => '')
 		);
 
@@ -252,7 +252,7 @@ if ( ! function_exists('get_more_js'))
 				array('src' => $path.'custom/js/tablesort.js',
 					  'load_on_view' => 'auth/index'),
 
-				array('src' => $path.'admin/plugins/calendar/calendar.min.js',
+				array('src' => $path.'semantic-ui/calendar/calendar.min.js',
 					  'load_on_view' => ''),
 
 				array('src' => $path.'custom/js/datepicker.js',

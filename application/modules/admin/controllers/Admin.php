@@ -96,19 +96,6 @@ class Admin extends MX_Controller
         }
     }
 
-    public function _get_settings()
-    {
-        $settings = array();
-
-        $query = $this->db->get('settings');
-
-        foreach($query->result() as $param) {
-            $settings[$param->name] = $param->value;
-        }
-
-        return $settings;
-    }
-
     public function switch_menu()
     {
         if (is_admin($this))
@@ -160,5 +147,18 @@ class Admin extends MX_Controller
     public function _get_active_lang()
     {
         return $this->db->where('active', '1')->get('languages')->row();
+    }
+
+    public function _get_settings()
+    {
+        $settings = array();
+
+        $query = $this->db->get('settings');
+
+        foreach($query->result() as $param) {
+            $settings[$param->name] = $param->value;
+        }
+
+        return $settings;
     }
 }
