@@ -27,12 +27,7 @@
   text-shadow: none !important;
 }
 
-.ui.leaf.rating .icon:before {
-  content: '\f06c';
-}
-
-/* Active */
-
+.ui.leaf.rating .icon:before,
 .ui.leaf.rating .active.icon:before {
   content: '\f06c';
 }
