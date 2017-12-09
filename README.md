@@ -7,6 +7,7 @@ Code Igniter Starter Project including:
 - Some custom classes, helpers and libraries to code faster.
 
 **Login   :** admin@admin.com
+
 **Password:** password
 
 
