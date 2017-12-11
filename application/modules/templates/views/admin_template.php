@@ -67,12 +67,12 @@
     <script type="text/javascript" src="<?php echo base_url('public/assets/jquery/jquery-3.2.1.min.js'); ?>"></script>
     <script type="text/javascript" src="<?php echo base_url('public/assets/admin/plugins/nicescrool/jquery.nicescroll.min.js'); ?>"></script>
     <script type="text/javascript" src="<?php echo base_url('public/assets/semantic-ui/semantic.min.js'); ?>"></script>
-    <script type="text/javascript" src="<?php echo base_url('public/assets/admin/js/app.js'); ?>"></script>
     <script type="text/javascript">
         var base_url = '<?php echo base_url(); ?>';
         var leftmenu_color = '<?php echo $this->session->userdata('leftmenu_color'); ?>';
         var topmenu_color = '<?php echo $this->session->userdata('topmenu_color'); ?>';
     </script>
+    <script type="text/javascript" src="<?php echo base_url('public/assets/admin/js/app.js'); ?>"></script>
     <script type="text/javascript" src="<?php echo base_url('public/assets/custom/js/search.js'); ?>"></script>
     <?php load_js_array($more_js); ?>
 </body>
