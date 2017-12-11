@@ -11,8 +11,7 @@
         <meta name="robots" content="index, follow, noodp">
         <title><?= $title; ?></title>
         <!-- CSS  -->
-        <link href="<?= base_url('public/assets/semantic-ui/semantic.min.css'); ?>" type="text/css" rel="stylesheet"
-              media="screen,print"/>
+        <link href="<?= base_url('public/assets/semantic-ui/semantic.min.css'); ?>" type="text/css" rel="stylesheet" />
         <link href="<?= base_url('public/assets/custom/css/semantic_tweaks.css'); ?>" type="text/css" rel="stylesheet" />
         <link href="<?= base_url('public/assets/custom/css/init.css'); ?>" type="text/css" rel="stylesheet" />
         <?php load_css_array($more_css); ?>

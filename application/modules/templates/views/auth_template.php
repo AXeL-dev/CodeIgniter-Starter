@@ -14,8 +14,8 @@
     <meta name="description" content="<?= $meta_description; ?>" />
     <meta name="keywords" content="<?= $meta_keywords; ?>" />
     <meta name="author" content="<?= $meta_author; ?>" />
-    <link href="<?php echo base_url('public/assets/semantic-ui/semantic.min.css'); ?>" rel="stylesheet" />
-    <link href="<?php echo base_url('public/assets/admin/css/main.css'); ?>" rel="stylesheet" />
+    <link href="<?php echo base_url('public/assets/semantic-ui/semantic.min.css'); ?>" type="text/css" rel="stylesheet" />
+    <link href="<?php echo base_url('public/assets/admin/css/main.css'); ?>" type="text/css" rel="stylesheet" />
     <?php load_css_array($more_css); ?>
 </head>
 <body class="signin">

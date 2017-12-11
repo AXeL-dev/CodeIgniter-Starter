@@ -291,7 +291,7 @@ if ( ! function_exists('load_css_array'))
 		if (is_array($array_to_load))
         {
             foreach ($array_to_load as $css) {
-            	echo '<link href="'.$css['href'].'" rel="stylesheet" />'."\n";
+            	echo '<link href="'.$css['href'].'" type="text/css" rel="stylesheet" />'."\n";
             }
         }
 	}
@@ -305,7 +305,7 @@ if ( ! function_exists('load_js_array'))
 		if (is_array($array_to_load))
         {
             foreach ($array_to_load as $js) {
-            	echo '<script src="'.$js['src'].'"></script>'."\n";
+            	echo '<script type="text/javascript" src="'.$js['src'].'"></script>'."\n";
             }
         }
 	}
